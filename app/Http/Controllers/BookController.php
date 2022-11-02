@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookRequest;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
@@ -23,12 +24,10 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BookRequest $request)
     {
         //
-		$request->validate([
-			'title'=>['required']
-		]);
+		// $request->validate(['title'=>['required']]);
 		$book = new Book;
 		$book->title = $request->input('title');
 		$book->save();
@@ -55,12 +54,10 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(BookRequest $request, Book $book)
     {
         //
-		$request->validate([
-			'title'=>['required']
-		]);
+		// $request->validate(['title'=>['required']]);
 		$book->title = $request->input('title');
 		$book->save();
 
